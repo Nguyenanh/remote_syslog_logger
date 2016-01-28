@@ -8,7 +8,7 @@ module RemoteSyslogLogger
       @remote_port     = remote_port
       @whinyerrors     = options[:whinyerrors]
       
-      @socket = UDPSocket.new
+      @socket = TCPSocket.new
       @packet = SyslogProtocol::Packet.new
 
       local_hostname   = options[:local_hostname] || (Socket.gethostname rescue `hostname`.chomp)
